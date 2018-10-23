@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+	<title>Nave</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+        html {
+            background-color: blue;
+        }
+		h1 {text-align: center;}
+
+		#areaJ {
+			position: relative;
+			margin: auto;
+			width: 480px;
+			height: 320px;
+			border: 1px solid;
+			background-image: url(img/estrellas.jpg); 
+			cursor: url(img/ovni.png), default;
+            color: white;
+            overflow: hidden;
+		}
+
+        #areaJ #instrucciones {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        #areaJ:hover #instrucciones {
+            display: none;
+        }
+
+        #areaJ:hover {
+            animation: fondoanimado 2s infinite linear;
+        }
+
+        .meteoritos {
+            position: relative;
+            background-image: url(img/meteorito.png);
+            background-size: 100%, 100%;
+            transform: translateX(-100%);
+        }
+
+        #findejuego {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: black;
+            color: white;
+            display: none;
+            cursor: default;
+        }
+
+        #findejuego div{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .meteoritos:hover ~ #findejuego {
+            display: block;
+        }
+
+        #findejuego:hover {
+            display: block;
+        }
+
+        #areaJ:hover .meteoritos {
+            animation-name: meteorito;
+            animation-iteration-count: infinite;   
+        }
+
+        @keyframes fondoanimado {
+            from {
+                background-position-x: 0px;
+            }
+            to {
+                background-position-x: 480px; 
+            }
+        }
+
+        @keyframes meteorito {
+            to {
+                left: 100%;
+                transform: translateX(100%);
+            }
+        }
+	</style>
+</head>
+<body>
+	<h1>Esquiva los meteoritos</h1>
+	<div id="areaJ">
+		<h2 id="instrucciones">Ingresa en el area del juego para iniciar</h2>
+		<div class="meteoritos" style="width: 45px; height : 45px; left: -250px; animation-duration: 2s; animation-timing-function: linear;"> </div>
+		<div class="meteoritos" style="width: 60px; height : 60px; left: -50px; animation-duration: 6s; animation-timing-function: ease;"></div>
+        <div class="meteoritos" style="width: 35px; height : 35px; left: -100px; animation-duration: 4s; animation-timing-function: ease-out;"></div>
+        <div class="meteoritos" style="width: 90px; height : 90px; left: -500px; animation-duration: 3.5s; animation-timing-function: ease-in;"></div>
+        <div class="meteoritos" style="width: 45px; height : 45px; left: -px; animation-duration: 2.5s; animation-timing-function: cubic-bezier(.85,.31,.19,.77);"></div>
+        <div class="meteoritos" style="width: 35px; height : 35px; left: -150px; animation-duration: 4.5s; animation-timing-function: linear;"></div>
+
+		<div id="findejuego">
+			<div>
+                <h2>Fin de Juego, perdiste</h2>
+                <img src="img/alien.png">         
+            </div>
+		</div>
+	</div>
+</body>
+</html>
